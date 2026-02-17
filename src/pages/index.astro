@@ -1,90 +1,167 @@
 ---
-import Header from "../components/Header.astro";
-import Sidebar from "../components/Sidebar.astro";
+import Header from '../components/Header.astro';
+import Sidebar from '../components/Sidebar.astro';
+import {
+  about,
+  certifications,
+  contact,
+  education,
+  experience,
+  hero,
+  languages,
+  projects,
+  site,
+  skills,
+} from '../data/portfolio';
 ---
 
-
 <!DOCTYPE html>
-<html
->
-  <Header title="Sam Bernstein" />
+<html lang="en">
+  <Header title={site.title} description={site.description} canonicalUrl={site.canonicalUrl} ogImage={site.ogImage} />
   <body>
     <div class="content">
-      <Sidebar selectedItem="home" />
-      <nav class="main">
-        <div class="container">
-          <main class="fold-content-container">
+      <Sidebar />
+      <main class="main">
+        <div class="container portfolio-container">
+          <section id="home" class="portfolio-section hero-section">
             <div class="fold-content">
-              <h1>Hi, I'm Sam.<br />I build things for the web.</h1>
-              <p class="lead">
-                Experienced backend developer and cloud architect. A proactive team member dedicated to continuous learning, problem-solving, and aiding teammates in achieving quicker outcomes.
-              </p>
+              <div class="mini-label-white">{site.location}</div>
+              <h1>{hero.greeting}<br />{hero.headline}</h1>
+              <p class="lead">{hero.oneLiner}</p>
+              <div class="chips-container role-chips">
+                {hero.keyRoles.map((role) => <div class="single-chip small-chip">{role}</div>)}
+              </div>
             </div>
-            <a href="mailto:sam@overview.co.il	" class="button w-button">Contact</a>
-          </main>
-          <div class="projects-section">
-            <!-- Software Development -->
-            <a href="/software-development" class="projects-container">
-              <div class="single-projects-category">
-                <div class="projects-category-image-container">
-                  <img src="./assets/browser.svg" loading="lazy" alt="" class="projects-category-image" />
-                </div>
-              </div>
-              <div class="single-projects-content">
-                <h4>Software Development</h4>
-                <div class="tech-tools-container">
-                  <div class="mini-label-white gray-color">Technologies &amp; tools</div>
-                  <div class="chips-container chips-container-small-width">
-                    <div class="single-chip small-chip">React</div>
-                    <div class="single-chip small-chip">Next.js</div>
-                    <div class="single-chip small-chip">Node.js</div>
-                    <div class="single-chip small-chip">MongoDB</div>
-                    <div class="single-chip small-chip">Heroku</div>
-                    <div class="single-chip small-chip">RabbitMQ</div>
-                    <div class="single-chip small-chip">Express.js</div>
-                    <div class="single-chip small-chip">TypeScript</div>
-                    <div class="single-chip small-chip">NestJS</div>
-                    <div class="single-chip small-chip">Angular</div>
-                    <div class="single-chip small-chip">Postgres</div>
-                    <div class="single-chip small-chip">Linode</div>
-                  </div>
-                </div>
-              </div>
-            </a>
-            <!-- DevOps & Cloud -->
-            <a href="/devops" class="projects-container">
-              <div class="single-projects-category">
-                <div class="projects-category-image-container devops-img">
-                  <img src="./assets/database.svg" loading="lazy" alt="" class="projects-category-image" />
-                </div>
-              </div>
-              <div class="single-projects-content">
-                <h4>DevOps &amp;&nbsp;Cloud</h4>
-                <div class="tech-tools-container">
-                  <div class="mini-label-white gray-color">Technologies &amp; tools</div>
-                  <div class="chips-container chips-container-small-width">
-                    <div class="single-chip small-chip">Terraform</div>
-                    <div class="single-chip small-chip">Azure</div>
-                    <div class="single-chip small-chip">AWS</div>
-                    <div class="single-chip small-chip">Docker</div>
-                    <div class="single-chip small-chip">Kubernetes</div>
-                    <div class="single-chip small-chip">GitLab CI/CD</div>
-                    <div class="single-chip small-chip">RKE</div>
-                    <div class="single-chip small-chip">Node.js</div>
-                    <div class="single-chip small-chip">RabbitMQ</div>
-                    <div class="single-chip small-chip">Linux</div>
-                    <div class="single-chip small-chip">Bash</div>
-                    <div class="single-chip small-chip">Grafana</div>
-                    <div class="single-chip small-chip">Prometheus</div>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-        </div>
-      </nav>
-    </div>
+            <div class="cta-row">
+              <a href={hero.ctas.email} class="button w-button">Email</a>
+              <a href={hero.ctas.linkedin} target="_blank" rel="noreferrer" class="button w-button">LinkedIn</a>
+              <a href={hero.ctas.github} target="_blank" rel="noreferrer" class="button w-button">GitHub</a>
+              <a href={hero.ctas.cv} class="button w-button" download>Download CV</a>
+            </div>
+          </section>
 
-    <!--[if lte IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
+          <section id="about" class="portfolio-section">
+            <h3>About</h3>
+            <div class="project-desc project-desc-list w-richtext">
+              <ul role="list">
+                {about.map((line) => <li>{line}</li>)}
+              </ul>
+            </div>
+          </section>
+
+          <section id="skills" class="portfolio-section">
+            <h3>Skills</h3>
+            <div class="skills-grid">
+              {skills.map((group) => (
+                <article class="skill-card">
+                  <div class="mini-label-white gray-color">{group.group}</div>
+                  <div class="chips-container">
+                    {group.items.map((skill) => (
+                      <div class="single-chip">
+                        {skill.name} <span class="skill-level">{skill.level}</span>
+                      </div>
+                    ))}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section id="experience" class="portfolio-section">
+            <h3>Experience</h3>
+            <div class="resouce-items">
+              {experience.map((role) => (
+                <article class="single-item">
+                  <h4>{role.title}</h4>
+                  <p class="meta-line">{role.company} | {role.location} | {role.dates}</p>
+                  <div class="project-desc project-desc-list w-richtext">
+                    <ul role="list">
+                      {role.bullets.map((bullet) => <li>{bullet}</li>)}
+                    </ul>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section id="projects" class="portfolio-section">
+            <h3>Featured Projects</h3>
+            <div class="resouce-items">
+              {projects.map((project) => (
+                <article class="single-item project-card">
+                  <h4>{project.name}</h4>
+                  <p><strong>Problem:</strong> {project.problem}</p>
+                  <p><strong>Approach:</strong> {project.approach}</p>
+                  <p><strong>Impact:</strong> {project.impact}</p>
+                  <div class="mini-label-white gray-color">Highlights</div>
+                  <div class="project-desc project-desc-list w-richtext">
+                    <ul role="list">
+                      {project.highlights.map((highlight) => <li>{highlight}</li>)}
+                    </ul>
+                  </div>
+                  <div class="mini-label-white gray-color">Tech Stack</div>
+                  <div class="chips-container">
+                    {project.tech.map((item) => <div class="single-chip small-chip">{item}</div>)}
+                  </div>
+                  <div class="project-links">
+                    <a href={project.links.repo} class="button w-button" target="_blank" rel="noreferrer">Repo</a>
+                    <a href={project.links.demo} class="button w-button" target="_blank" rel="noreferrer">Demo</a>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section id="education" class="portfolio-section">
+            <h3>Education</h3>
+            <div class="resouce-items">
+              {education.map((item) => (
+                <article class="single-item">
+                  <h4>{item.degree}</h4>
+                  <p class="meta-line">{item.school} | {item.location} | {item.dates}</p>
+                  {item.grade && <p class="meta-line">{item.grade}</p>}
+                  <div class="mini-label-white gray-color">Relevant Modules</div>
+                  <div class="chips-container">
+                    {item.modules.map((module) => <div class="single-chip small-chip">{module}</div>)}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section id="certifications" class="portfolio-section">
+            <h3>Certifications & Languages</h3>
+            <div class="cert-grid">
+              <article class="single-item">
+                <div class="mini-label-white gray-color">Certifications</div>
+                <div class="project-desc project-desc-list w-richtext">
+                  <ul role="list">
+                    {certifications.map((certification) => <li>{certification}</li>)}
+                  </ul>
+                </div>
+              </article>
+              <article class="single-item">
+                <div class="mini-label-white gray-color">Languages</div>
+                <div class="project-desc project-desc-list w-richtext">
+                  <ul role="list">
+                    {languages.map((language) => <li>{language}</li>)}
+                  </ul>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <section id="contact" class="portfolio-section">
+            <h3>Contact</h3>
+            <p class="lead">Open to Data Engineer, ML Engineer, and Cloud/Platform roles across London and the UK.</p>
+            <div class="cta-row">
+              <a class="button w-button" href={`mailto:${contact.email}`}>Email</a>
+              <a class="button w-button" href={contact.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+              <a class="button w-button" href={contact.github} target="_blank" rel="noreferrer">GitHub</a>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
   </body>
 </html>

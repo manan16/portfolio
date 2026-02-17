@@ -669,3 +669,109 @@ p {
     height: 64px;
   }
 }
+
+/* Portfolio customisation */
+.portfolio-container {
+  padding-bottom: 56px;
+}
+
+.portfolio-section {
+  scroll-margin-top: 24px;
+  border-top: 1px solid #2f2f2f;
+  padding-top: 28px;
+}
+
+.portfolio-section:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.hero-section {
+  min-height: 380px;
+}
+
+.role-chips {
+  margin-top: 20px;
+}
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.skills-grid,
+.cert-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.skills-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.cert-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.skill-card,
+.project-card {
+  background: rgba(38, 38, 38, 0.45);
+  border: 1px solid #323232;
+  border-radius: 12px;
+  padding: 18px;
+}
+
+.skill-level {
+  margin-left: 8px;
+  color: #b0b0b0;
+  font-size: 12px;
+}
+
+.meta-line {
+  margin-bottom: 6px;
+  color: #c2c2c2;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.project-links {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.sidebar-quick-actions {
+  margin-top: auto;
+}
+
+@media screen and (max-width: 991px) {
+  .sidebar-quick-actions {
+    display: none;
+  }
+
+  .skills-grid,
+  .cert-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .portfolio-container {
+    gap: 56px;
+  }
+
+  .portfolio-section {
+    padding-top: 20px;
+  }
+
+  .hero-section {
+    min-height: auto;
+  }
+
+  .cta-row .button {
+    width: 100%;
+    text-align: center;
+  }
+}
