@@ -3,7 +3,7 @@ export const site = {
   shortTitle: 'Manan Mehta',
   description:
     'Data Engineer and ML Engineer in London building scalable AWS data platforms, document intelligence systems, and production MLOps workflows.',
-  canonicalUrl: 'https://TODO-your-domain.com',
+  canonicalUrl: 'https://manan16.github.io/portfolio',
   ogImage: '/assets/webclip.jpg',
   roleLabel: 'Data / Platform Engineer',
   location: 'London, UK',

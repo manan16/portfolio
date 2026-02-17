@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://TODO-your-domain.com',
+  site: 'https://manan16.github.io',
+  base: '/portfolio',
 });
