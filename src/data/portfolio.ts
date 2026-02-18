@@ -19,7 +19,7 @@ export const hero = {
     email: 'mailto:manan161200@gmail.com',
     linkedin: 'https://www.linkedin.com/in/manan-mehta-1240b8144',
     github: 'TODO: Add GitHub URL',
-    cv: '/assets/MananMehta_Resume.pdf',
+    cv: `${import.meta.env.BASE_URL}assets/MananMehta_Resume.pdf`,
   },
 };
 

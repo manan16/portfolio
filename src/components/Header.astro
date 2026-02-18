@@ -9,6 +9,8 @@ interface HeaderProps {
 }
 
 const { title, description, canonicalUrl, ogImage = '/assets/webclip.jpg' } = Astro.props as HeaderProps;
+const base = import.meta.env.BASE_URL;
+const resolveAsset = (path: string) => `${base}${path.replace(/^\//, '')}`;
 ---
 
 <head>
@@ -23,15 +25,15 @@ const { title, description, canonicalUrl, ogImage = '/assets/webclip.jpg' } = As
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:url" content={canonicalUrl} />
-  <meta property="og:image" content={ogImage} />
+  <meta property="og:image" content={resolveAsset(ogImage)} />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
-  <meta name="twitter:image" content={ogImage} />
+  <meta name="twitter:image" content={resolveAsset(ogImage)} />
 
   <ViewTransitions />
-  <link href="/assets/styles.css" rel="stylesheet" type="text/css" />
+  <link href={resolveAsset('/assets/styles.css')} rel="stylesheet" type="text/css" />
   <link href="https://fonts.googleapis.com/" rel="preconnect" />
   <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin="anonymous" />
   <script type="text/javascript">
@@ -42,6 +44,6 @@ const { title, description, canonicalUrl, ogImage = '/assets/webclip.jpg' } = As
       if ('ontouchstart' in o || (o.DocumentTouch && c instanceof DocumentTouch)) n.className += t + 'touch';
     })(window, document);
   </script>
-  <link href="/assets/favicon-32x32.png" rel="shortcut icon" type="image/x-icon" />
-  <link href="/assets/favicon-32x32.png" rel="apple-touch-icon" />
+  <link href={resolveAsset('/assets/favicon-32x32.png')} rel="shortcut icon" type="image/x-icon" />
+  <link href={resolveAsset('/assets/favicon-32x32.png')} rel="apple-touch-icon" />
 </head>
