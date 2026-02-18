@@ -13,6 +13,8 @@ import {
   site,
   skills,
 } from '../data/portfolio';
+
+const hasDemoUrl = (url: string) => /^https?:\/\//i.test(url.trim());
 ---
 
 <!DOCTYPE html>
@@ -104,8 +106,9 @@ import {
                     {project.tech.map((item) => <div class="single-chip small-chip">{item}</div>)}
                   </div>
                   <div class="project-links">
-                    <a href={project.links.repo} class="button w-button" target="_blank" rel="noreferrer">Repo</a>
-                    <a href={project.links.demo} class="button w-button" target="_blank" rel="noreferrer">Demo</a>
+                    {hasDemoUrl(project.links.demo) && (
+                      <a href={project.links.demo} class="button w-button" target="_blank" rel="noreferrer">Demo</a>
+                    )}
                   </div>
                 </article>
               ))}
