@@ -1,3 +1,6 @@
+const withBase = (path: string) =>
+  `${import.meta.env.BASE_URL.replace(/\/?$/, '/')}${path.replace(/^\//, '')}`;
+
 export const site = {
   title: 'Manan Mehta | Data Engineer & ML Engineer',
   shortTitle: 'Manan Mehta',
@@ -19,7 +22,7 @@ export const hero = {
     email: 'mailto:manan161200@gmail.com',
     linkedin: 'https://www.linkedin.com/in/manan-mehta-1240b8144',
     github: 'TODO: Add GitHub URL',
-    cv: `${import.meta.env.BASE_URL}assets/MananMehta_Resume.pdf`,
+    cv: withBase('/assets/MananMehta_Resume.pdf'),
   },
 };
 
