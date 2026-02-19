@@ -14,7 +14,9 @@ import {
   skills,
 } from '../data/portfolio';
 
-const hasDemoUrl = (url: string) => /^https?:\/\//i.test(url.trim());
+const hasExternalUrl = (url: string) => /^https?:\/\//i.test(url.trim());
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const resolveAsset = (path: string) => `${base}${path.replace(/^\//, '')}`;
 ---
 
 <!DOCTYPE html>
@@ -24,6 +26,11 @@ const hasDemoUrl = (url: string) => /^https?:\/\//i.test(url.trim());
     <div class="content">
       <Sidebar />
       <main class="main">
+        <div class="theme-toggle-wrap">
+          <button id="themeToggle" class="theme-toggle button w-button" type="button" aria-label="Toggle light mode">
+            Light mode
+          </button>
+        </div>
         <div class="container portfolio-container">
           <section id="home" class="portfolio-section hero-section">
             <div class="fold-content">
@@ -35,15 +42,15 @@ const hasDemoUrl = (url: string) => /^https?:\/\//i.test(url.trim());
               </div>
             </div>
             <div class="cta-row">
-              <a href={hero.ctas.email} class="button w-button">Email</a>
-              <a href={hero.ctas.linkedin} target="_blank" rel="noreferrer" class="button w-button">LinkedIn</a>
-              <a href={hero.ctas.github} target="_blank" rel="noreferrer" class="button w-button">GitHub</a>
-              <a href={hero.ctas.cv} class="button w-button" download>Download CV</a>
+              <a href={hero.ctas.email} class="button w-button"><img src={resolveAsset('/assets/browser.svg')} alt="" class="button-icon" />Email</a>
+              <a href={hero.ctas.linkedin} target="_blank" rel="noreferrer" class="button w-button"><img src={resolveAsset('/assets/dns.svg')} alt="" class="button-icon" />LinkedIn</a>
+              <a href={hero.ctas.github} target="_blank" rel="noreferrer" class="button w-button"><img src={resolveAsset('/assets/code.svg')} alt="" class="button-icon" />GitHub</a>
+              <a href={hero.ctas.cv} class="button w-button" download><img src={resolveAsset('/assets/favorite.svg')} alt="" class="button-icon" />Download CV</a>
             </div>
           </section>
 
           <section id="about" class="portfolio-section">
-            <h3>About</h3>
+            <div class="section-title"><img src={resolveAsset('/assets/code.svg')} alt="" class="section-icon" /><h3>About</h3></div>
             <div class="project-desc project-desc-list w-richtext">
               <ul role="list">
                 {about.map((line) => <li>{line}</li>)}
@@ -52,7 +59,7 @@ const hasDemoUrl = (url: string) => /^https?:\/\//i.test(url.trim());
           </section>
 
           <section id="skills" class="portfolio-section">
-            <h3>Skills</h3>
+            <div class="section-title"><img src={resolveAsset('/assets/browser.svg')} alt="" class="section-icon" /><h3>Skills</h3></div>
             <div class="skills-grid">
               {skills.map((group) => (
                 <article class="skill-card">
@@ -70,7 +77,7 @@ const hasDemoUrl = (url: string) => /^https?:\/\//i.test(url.trim());
           </section>
 
           <section id="experience" class="portfolio-section">
-            <h3>Experience</h3>
+            <div class="section-title"><img src={resolveAsset('/assets/dns.svg')} alt="" class="section-icon" /><h3>Experience</h3></div>
             <div class="resouce-items">
               {experience.map((role) => (
                 <article class="single-item">
@@ -87,11 +94,16 @@ const hasDemoUrl = (url: string) => /^https?:\/\//i.test(url.trim());
           </section>
 
           <section id="projects" class="portfolio-section">
-            <h3>Featured Projects</h3>
+            <div class="section-title"><img src={resolveAsset('/assets/favorite.svg')} alt="" class="section-icon" /><h3>Featured Projects</h3></div>
             <div class="resouce-items">
               {projects.map((project) => (
                 <article class="single-item project-card">
-                  <h4>{project.name}</h4>
+                  <div class="project-header">
+                    <h4>{project.name}</h4>
+                    <div class="project-visual-wrap">
+                      <img src={resolveAsset(project.visual.icon)} alt={project.visual.alt} class="project-visual-icon" />
+                    </div>
+                  </div>
                   <p><strong>Problem:</strong> {project.problem}</p>
                   <p><strong>Approach:</strong> {project.approach}</p>
                   <p><strong>Impact:</strong> {project.impact}</p>
@@ -106,7 +118,10 @@ const hasDemoUrl = (url: string) => /^https?:\/\//i.test(url.trim());
                     {project.tech.map((item) => <div class="single-chip small-chip">{item}</div>)}
                   </div>
                   <div class="project-links">
-                    {hasDemoUrl(project.links.demo) && (
+                    {hasExternalUrl(project.links.repo) && (
+                      <a href={project.links.repo} class="button w-button" target="_blank" rel="noreferrer">Repo</a>
+                    )}
+                    {hasExternalUrl(project.links.demo) && (
                       <a href={project.links.demo} class="button w-button" target="_blank" rel="noreferrer">Demo</a>
                     )}
                   </div>
@@ -116,7 +131,7 @@ const hasDemoUrl = (url: string) => /^https?:\/\//i.test(url.trim());
           </section>
 
           <section id="education" class="portfolio-section">
-            <h3>Education</h3>
+            <div class="section-title"><img src={resolveAsset('/assets/database.svg')} alt="" class="section-icon" /><h3>Education</h3></div>
             <div class="resouce-items">
               {education.map((item) => (
                 <article class="single-item">
@@ -133,7 +148,7 @@ const hasDemoUrl = (url: string) => /^https?:\/\//i.test(url.trim());
           </section>
 
           <section id="certifications" class="portfolio-section">
-            <h3>Certifications & Languages</h3>
+            <div class="section-title"><img src={resolveAsset('/assets/home.svg')} alt="" class="section-icon" /><h3>Certifications & Languages</h3></div>
             <div class="cert-grid">
               <article class="single-item">
                 <div class="mini-label-white gray-color">Certifications</div>
@@ -155,16 +170,44 @@ const hasDemoUrl = (url: string) => /^https?:\/\//i.test(url.trim());
           </section>
 
           <section id="contact" class="portfolio-section">
-            <h3>Contact</h3>
+            <div class="section-title"><img src={resolveAsset('/assets/browser.svg')} alt="" class="section-icon" /><h3>Contact</h3></div>
             <p class="lead">Open to Data Engineer, ML Engineer, and Cloud/Platform roles across London and the UK.</p>
             <div class="cta-row">
-              <a class="button w-button" href={`mailto:${contact.email}`}>Email</a>
-              <a class="button w-button" href={contact.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
-              <a class="button w-button" href={contact.github} target="_blank" rel="noreferrer">GitHub</a>
+              <a class="button w-button" href={`mailto:${contact.email}`}><img src={resolveAsset('/assets/browser.svg')} alt="" class="button-icon" />Email</a>
+              <a class="button w-button" href={contact.linkedin} target="_blank" rel="noreferrer"><img src={resolveAsset('/assets/dns.svg')} alt="" class="button-icon" />LinkedIn</a>
+              <a class="button w-button" href={contact.github} target="_blank" rel="noreferrer"><img src={resolveAsset('/assets/code.svg')} alt="" class="button-icon" />GitHub</a>
             </div>
           </section>
         </div>
       </main>
     </div>
+    <script>
+      const THEME_KEY = 'portfolio-theme';
+      const toggle = document.getElementById('themeToggle');
+
+      const setTheme = (theme) => {
+        document.documentElement.setAttribute('data-theme', theme);
+        if (toggle) {
+          toggle.textContent = theme === 'light' ? 'Dark mode' : 'Light mode';
+          toggle.setAttribute('aria-pressed', String(theme === 'light'));
+        }
+      };
+
+      const storedTheme = localStorage.getItem(THEME_KEY);
+      const initialTheme =
+        storedTheme ||
+        (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+
+      setTheme(initialTheme);
+
+      if (toggle) {
+        toggle.addEventListener('click', () => {
+          const current = document.documentElement.getAttribute('data-theme') || 'dark';
+          const next = current === 'light' ? 'dark' : 'light';
+          localStorage.setItem(THEME_KEY, next);
+          setTheme(next);
+        });
+      }
+    </script>
   </body>
 </html>
