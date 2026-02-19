@@ -44,6 +44,7 @@ const resolveAsset = (path: string) => `${base}${path.replace(/^\//, '')}`;
       if ('ontouchstart' in o || (o.DocumentTouch && c instanceof DocumentTouch)) n.className += t + 'touch';
     })(window, document);
   </script>
-  <link href={resolveAsset('/assets/favicon-32x32.png')} rel="shortcut icon" type="image/x-icon" />
+  <link href={resolveAsset('/assets/code.svg')} rel="icon" type="image/svg+xml" />
+  <link href={resolveAsset('/assets/code.svg')} rel="shortcut icon" type="image/svg+xml" />
   <link href={resolveAsset('/assets/favicon-32x32.png')} rel="apple-touch-icon" />
 </head>

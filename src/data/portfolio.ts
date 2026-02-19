@@ -5,10 +5,10 @@ export const site = {
   title: 'Manan Mehta | Data Engineer & ML Engineer',
   shortTitle: 'Manan Mehta',
   description:
-    'Data Engineer and ML Engineer in London building scalable AWS data platforms, document intelligence systems, and production MLOps workflows.',
+    'Data Engineer and Data Scientist in London building scalable AWS data platforms, document intelligence systems, and production MLOps workflows.',
   canonicalUrl: 'https://manan16.github.io/portfolio',
   ogImage: '/assets/webclip.jpg',
-  roleLabel: 'Data / Platform Engineer',
+  roleLabel: 'Data Engineer/ Data Scientist',
   location: 'London, UK',
 };
 
@@ -16,12 +16,12 @@ export const hero = {
   greeting: "Hi, I\'m Manan.",
   headline: 'I build data and ML platforms that scale in production.',
   oneLiner:
-    'Data Engineer / ML Engineer with 3+ years delivering cloud-native ingestion, CDC, and document intelligence systems on AWS.',
-  keyRoles: ['Data Engineer', 'ML Engineer', 'Cloud / Platform'],
+    'Data Engineer / Data Scientist with 3+ years delivering cloud-native ingestion, CDC, and document intelligence systems on AWS.',
+  keyRoles: ['Data Engineer', 'Data Scientist', 'Cloud / Platform'],
   ctas: {
     email: 'mailto:manan161200@gmail.com',
     linkedin: 'https://www.linkedin.com/in/manan-mehta-1240b8144',
-    github: 'TODO: Add GitHub URL',
+    github: 'https://github.com/manan16',
     cv: withBase('/assets/MananMehta_Resume.pdf'),
   },
 };
@@ -135,6 +135,10 @@ export const experience = [
 export const projects = [
   {
     name: 'Regulatory RAG Assistant',
+    visual: {
+      icon: '/assets/code.svg',
+      alt: 'RAG assistant icon',
+    },
     problem:
       'Regulatory teams spent hours manually searching policy documents to answer recurring compliance questions.',
     approach:
@@ -153,6 +157,10 @@ export const projects = [
   },
   {
     name: 'Enterprise Document Digitisation Platform',
+    visual: {
+      icon: '/assets/database.svg',
+      alt: 'Document platform icon',
+    },
     problem:
       'High-volume document extraction required a scalable pipeline with reliable orchestration and searchability.',
     approach:
@@ -171,6 +179,10 @@ export const projects = [
   },
   {
     name: 'Prostate Cancer Detection Pipeline',
+    visual: {
+      icon: '/assets/favorite.svg',
+      alt: 'Cancer detection icon',
+    },
     problem:
       'Clinical image analysis required robust methods to distinguish benign vs malignant tumours from MRI scans.',
     approach:
@@ -189,6 +201,10 @@ export const projects = [
   },
   {
     name: 'NLP Text Summarisation App',
+    visual: {
+      icon: '/assets/browser.svg',
+      alt: 'Text summarisation icon',
+    },
     problem:
       'Long web articles were time-consuming to review for key insights.',
     approach:
@@ -201,12 +217,16 @@ export const projects = [
       'Configurable output for different use cases',
     ],
     links: {
-      repo: 'TODO: Add project/repo URL',
+      repo: 'https://github.com/manan16/text-sum',
       demo: 'TODO: Add demo URL (if available)',
     },
   },
   {
     name: 'Patent Analytics Dashboard',
+    visual: {
+      icon: '/assets/dns.svg',
+      alt: 'Patent analytics icon',
+    },
     problem:
       'Patent trend discovery needed searchable metadata with visual exploration in one place.',
     approach:
@@ -253,5 +273,5 @@ export const languages = ['English (Fluent)', 'Hindi (Fluent)'] as const;
 export const contact = {
   email: 'manan161200@gmail.com',
   linkedin: 'https://www.linkedin.com/in/manan-mehta-1240b8144',
-  github: 'TODO: Add GitHub URL',
+  github: 'https://github.com/manan16',
 };

@@ -702,6 +702,26 @@ p {
   gap: 12px;
 }
 
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-icon {
+  width: 18px;
+  height: 18px;
+  opacity: 0.85;
+}
+
+.button-icon {
+  width: 14px;
+  height: 14px;
+  margin-right: 8px;
+  opacity: 0.9;
+  vertical-align: text-bottom;
+}
+
 .skills-grid,
 .cert-grid {
   display: grid;
@@ -744,8 +764,139 @@ p {
   gap: 10px;
 }
 
+.project-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.project-visual-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid #3a3a3a;
+  background: rgba(28, 28, 28, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.project-visual-icon {
+  width: 20px;
+  height: 20px;
+  opacity: 0.88;
+}
+
 .sidebar-quick-actions {
   margin-top: auto;
+}
+
+.theme-toggle-wrap {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 5;
+}
+
+.theme-toggle {
+  padding: 8px 12px;
+  line-height: 18px;
+  margin-bottom: 8px;
+}
+
+html[data-theme='light'] body {
+  color: #252525;
+  background-color: #f4f6f8;
+}
+
+html[data-theme='light'] .sidebar {
+  background-color: #ffffff;
+  border-right-color: #dfe4ea;
+}
+
+html[data-theme='light'] .main {
+  background-image:
+    linear-gradient(rgba(244, 247, 251, 0.9), rgba(244, 247, 251, 0.9)),
+    repeating-linear-gradient(
+      0deg,
+      rgba(114, 134, 153, 0.06) 0,
+      rgba(114, 134, 153, 0.06) 1px,
+      transparent 1px,
+      transparent 38px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(114, 134, 153, 0.06) 0,
+      rgba(114, 134, 153, 0.06) 1px,
+      transparent 1px,
+      transparent 38px
+    ),
+    url('./grid-top-right.svg');
+  background-size: auto, 38px 38px, 38px 38px, auto 1130px;
+  background-position: 0 0, 0 0, 0 0, 0 0;
+}
+
+html[data-theme='light'] h1,
+html[data-theme='light'] h3,
+html[data-theme='light'] h4,
+html[data-theme='light'] .label-white,
+html[data-theme='light'] .mini-label-white {
+  color: #1f2733;
+}
+
+html[data-theme='light'] p,
+html[data-theme='light'] .label-gray,
+html[data-theme='light'] .project-desc,
+html[data-theme='light'] .meta-line {
+  color: #4f5e6b;
+}
+
+html[data-theme='light'] .button {
+  color: #1f2733;
+  background-color: #fff;
+  border-color: #cfd7df;
+}
+
+html[data-theme='light'] .button:hover {
+  background-color: #f5f8fb;
+}
+
+html[data-theme='light'] .single-chip {
+  color: #223140;
+  background-color: #e5ecf3;
+}
+
+html[data-theme='light'] .nav-link-container {
+  color: #516070;
+}
+
+html[data-theme='light'] .nav-link-container.w--current {
+  color: #1f2733;
+  background-color: #e7edf4;
+  border-color: #cfd7df;
+}
+
+html[data-theme='light'] .project-card,
+html[data-theme='light'] .skill-card {
+  background: rgba(255, 255, 255, 0.88);
+  border-color: #d8e0e8;
+}
+
+html[data-theme='light'] .portfolio-section {
+  border-top-color: #d8e0e8;
+}
+
+html[data-theme='light'] .niv-image {
+  border-color: #cfd7df;
+}
+
+html[data-theme='light'] .project-visual-wrap {
+  background: #eef3f8;
+  border-color: #d0dae3;
 }
 
 @media screen and (max-width: 991px) {
@@ -756,6 +907,11 @@ p {
   .skills-grid,
   .cert-grid {
     grid-template-columns: 1fr;
+  }
+
+  .theme-toggle-wrap {
+    position: static;
+    margin-bottom: 4px;
   }
 }
 
